@@ -2,6 +2,11 @@
 let express = require('express')
 //Start App
 let app = express();
+
+var cors = require('cors');
+
+app.use(cors());
+
 //Assign port
 var port = process.env.PORT || 8080;
 
