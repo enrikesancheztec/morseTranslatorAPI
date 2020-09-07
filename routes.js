@@ -1,12 +1,8 @@
-//initialize express router
 let router = require('express').Router();
+const { check } = require('express-validator');
 
-//Import Translator Controller
 var translatorController = require('./controller/TranslatorController');
 
-// Bio routes
-router.route('/morse-code')
-    .post(translatorController.getMorseCode);
+router.post('/morse-code', [check('message', 'Message cannot be empty').not().isEmpty()], translatorController.getMorseCode);
 
-//Export API routes
 module.exports = router;
